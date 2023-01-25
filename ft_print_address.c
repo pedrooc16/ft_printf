@@ -21,9 +21,11 @@ int ft_print_address(unsigned long int nb)
     if (nb == 0)
         return(write(1, "(nil)", 5));
     else
+    {
         counter = write(1, "0x", 2);
         counter += print_hex(nb);
         return (counter);    
+    }
 }
 
 int print_hex(unsigned long int nb)

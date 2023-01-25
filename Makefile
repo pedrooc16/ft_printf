@@ -1,5 +1,6 @@
 NAME = libftprintf.a
-SRC = ft_printf\
+SRC = ft_printf ft_hexadecimal ft_print_address ft_printf ft_putnbr\
+ft_unsigned_decimal ft_words\
 
 RM = rm -f
 CC = cc

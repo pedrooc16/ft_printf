@@ -37,8 +37,8 @@ int ft_putnbr(int nb)
     return (counter);
 }
 
-int main()
+/*int main()
 {
     int d = ft_putnbr(-4555923);
     printf("\n%d", d);
-}
+}*/

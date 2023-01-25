@@ -34,21 +34,21 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format); //inicializar a lista
 	while (format[i])
 		{
-			if (format[i++] == '%')
+			if (format[i] == '%')
 			{
-			if (check_flag(format[i++]) == 1)
+			 i++;
+			if (check_flag(format[i]) == 1)
 			{
 				counter += ft_placeholder(args, format[i]);
-				i++;	
 			}
 		}
-			counter += ft_putchar(format[i]);
+		else
+			    counter += ft_putchar(format[i]);
 			i++;
 		}
 		va_end(args);
 		return (counter);
 }
-
 int		ft_placeholder(va_list args, char spc)
 {
 	if (spc == 'c')
@@ -69,4 +69,24 @@ int		ft_placeholder(va_list args, char spc)
 			return (ft_print_address(va_arg(args, unsigned long int)));		
 	return (0);		
 }
+
+/* va_list holds the information needed by va_start, va_arg, va_copy, va_end;
+*va_list is a structure... using pointers for accessing values in stack;
+*macro void va_start(va_list ap, last_arg) initializes ap variable to be 
+*used with the va_arg and va_end macros. 
+*The va_start() macro initializes ap for subsequent use by va_arg(), 
+va_copy() and va_end(), and must be called first.
+*The last_arg is the last known fixed argument being passed to the function i.e. the argument before the ellipsis.
+*ap − This is the object of va_list and it will hold the 
+*information needed to retrieve the additional arguments with va_arg
+*va_arg will pull the arguments one by one, in the order they are listed...;
+*...va_arg syntax= va_arg(va_list, datatype), e.g.datatype could be 'int';
+* each va_arg invocation modifies va_list to point the next variable argument;
+*If the type of the next argument in ap (after promotions) is not compatible with T, the behavior is undefined, unless:
+one type is a signed integer type, the other type is the corresponding unsigned integer type,
+*and the value is representable in both types; or
+*0x is the prefix to indicate that the address is being printed as hexadecimal;
+*printf will return the number of charachters written, in this case, the counter;
+*
+*/
 
