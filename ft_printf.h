@@ -22,7 +22,7 @@ int ft_putstring(char *s);
 int ft_putnbr(int nb);
 int ft_hexadecimal(unsigned int nb, char spc);
 int ft_unsigned_decimal(unsigned int nb);
-int ft_print_address(unsigned long int nb);
+int ft_print_address(long unsigned int nb);
 
 
 #endif

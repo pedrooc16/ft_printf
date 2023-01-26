@@ -23,7 +23,7 @@ int ft_hexadecimal(unsigned int nb, char spc)
     else
         hex = "0123456789ABCDEF";
     
-    if (nb > 9)
+    if (nb >= 16)
     {
         counter += ft_hexadecimal(nb / 16, spc);
     }

@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int print_hex(unsigned long int nb);
+static int print_hex(long unsigned int nb);
 
-int ft_print_address(unsigned long int nb)
+int ft_print_address(long unsigned int nb)
 {
     int     counter;
 
@@ -28,14 +28,14 @@ int ft_print_address(unsigned long int nb)
     }
 }
 
-int print_hex(unsigned long int nb)
+static int print_hex(long unsigned int nb)
 {
     int         counter;
     char    *hex;
 
     counter = 0;
     hex = "0123456789abcdef";
-    if (nb > 9) 
+    if (nb >= 16) 
     {
        counter += print_hex(nb / 16);
     }

@@ -64,7 +64,7 @@ int		ft_placeholder(va_list args, char spc)
 	else if (spc == 'u')
 			return (ft_unsigned_decimal(va_arg(args, unsigned int)));
 	else if (spc == 'p')
-			return (ft_print_address(va_arg(args, unsigned long int)));		
+			return (ft_print_address(va_arg(args, long unsigned int)));		
 	return (0);		
 }
 
@@ -82,7 +82,8 @@ va_copy() and va_end(), and must be called first.
 * each va_arg invocation modifies va_list to point the next variable argument;
 *If the type of the next argument in ap (after promotions) is not compatible with T, the behavior is undefined, unless:
 one type is a signed integer type, the other type is the corresponding unsigned integer type,
-*and the value is representable in both types; or
+*and the value is representable in both types; or 
+*one type is pointer to void and the other is a pointer to a character type.
 *0x is the prefix to indicate that the address is being printed as hexadecimal;
 *printf will return the number of charachters written, in this case, the counter;
 *
