@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+int		ft_placeholder(va_list args, char spc);
+
 static int	check_flag(char c)
 {
 	if (c == 'x' || c == 'p' || c == 'c' 
@@ -21,30 +23,26 @@ static int	check_flag(char c)
 		return (0);
 }
 
-static int		ft_placeholder(va_list args, char spc);
-
 int	ft_printf(const char *format, ...)
 {
     va_list args;
-	int		i;
 	int		counter;
 
-	i = 0;
 	counter = 0;
 	va_start(args, format); //inicializar a lista
-	while (format[i])
+	while (*format != '\0')
 		{
-			if (format[i] == '%')
+			if (*format == '%')
 			{
-			 i++;
-			if (check_flag(format[i]) == 1)
+			 format++;
+			if (check_flag(*format) == 1)
 			{
-				counter += ft_placeholder(args, format[i]);
+				counter += ft_placeholder(args, *format);
 			}
 		}
 		else
-			    counter += ft_putchar(format[i]);
-			i++;
+			    counter += ft_putchar(*format);
+			format++;
 		}
 		va_end(args);
 		return (counter);
